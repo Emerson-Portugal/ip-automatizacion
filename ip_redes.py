@@ -145,19 +145,22 @@ def tabla_red(direcionRed, salto_red_nueva, host_nuevo, subRed, valor_clase_nuev
     print("SUB_RED            PRIMERA_IP        ULTIMA_IP            DIRECCION_BROADCAST     CANTIDAD DE HOST")
     print("---------------------------------------------------------------------------------------------")
 
-    salto_red_nueva_valor = 0
+    #salto_red_nueva_valor = 0
+    subRed_nueva = '.'.join(direcionRed)
+    direccion_ip = ipaddress.IPv4Address(subRed_nueva)
     for i in range(subRed):
-        direcionRed[valor_clase_nueva] = str(salto_red_nueva_valor)
-        subRed_nueva = '.'.join(direcionRed)
-        direccion_ip = ipaddress.IPv4Address(subRed_nueva)
-
+        #direcionRed[valor_clase_nueva] = str(salto_red_nueva_valor)
+        
+        
+        subRed_nueva = direccion_ip
         direccion_ip_suma_p = direccion_ip + 1
         direccion_ip_suma_u = direccion_ip + host_nuevo + 2
         direccion_ip_suma_b = direccion_ip_suma_u + 1
+        direccion_ip = direccion_ip_suma_b + 1
 
         print("{:<19s} {:<15s} {:<23s} {:<23s} {:<15s}".format(subRed_nueva, str(direccion_ip_suma_p), str(direccion_ip_suma_u), str(direccion_ip_suma_b), str(host_nuevo)))
 
-        salto_red_nueva_valor = salto_red_nueva_valor + salto_red_nueva
+        #salto_red_nueva_valor = salto_red_nueva_valor + salto_red_nueva
 
     
 
